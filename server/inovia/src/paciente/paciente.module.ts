@@ -6,6 +6,8 @@ import { CreatePacienterepository } from './repositories/create-paciente.reposit
 import { CreatePacienteService } from './services/create-paciente.service';
 import { ReadPacienteRepository } from './repositories/read-paciente.repository';
 import { ReadPacienteService } from './services/read-paciente.service';
+import { UpdatePacienteRepository } from './repositories/update-paciente.repository';
+import { UpdatePacienteService } from './services/update-paciente.service';
 
 @Module({
   imports: [
@@ -19,12 +21,16 @@ import { ReadPacienteService } from './services/read-paciente.service';
     CreatePacienteService,
     ReadPacienteRepository,
     ReadPacienteService,
+    UpdatePacienteRepository,
+    UpdatePacienteService,
   ],
   exports: [
     CreatePacienterepository,
     CreatePacienteService,
     ReadPacienteRepository,
     ReadPacienteService,
+    UpdatePacienteRepository,
+    UpdatePacienteService,
   ],
 })
 export class PacienteModule {}

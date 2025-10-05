@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Consulta, ConsultaDocument } from '../Schema/consulta.schema';
 import { Model } from 'mongoose';
@@ -16,7 +16,7 @@ export class UpdateConsultaRepository {
       .exec();
 
     if (!updatedConsulta) {
-      throw new Error('Consulta nao encontrada');
+      throw new NotFoundException('Consulta nao encontrada');
     }
 
     return updatedConsulta.toObject();

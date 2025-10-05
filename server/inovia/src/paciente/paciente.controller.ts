@@ -1,15 +1,25 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { CreatePacienteService } from './services/create-paciente.service';
 import type { PacienteDto } from './dto/paciente.dto';
 import { ApiQuery } from '@nestjs/swagger';
 import { ReadPacienteService } from './services/read-paciente.service';
 import { FilterPacienteDto } from './dto/filterPaciente.dto';
+import { UpdatePacienteService } from './services/update-paciente.service';
 
 @Controller('paciente')
 export class PacienteController {
   constructor(
     private readonly createPacienteService: CreatePacienteService,
     private readonly readPacienteService: ReadPacienteService,
+    private readonly updatePacienteService: UpdatePacienteService,
   ) {}
 
   @Post()
@@ -32,5 +42,13 @@ export class PacienteController {
   @ApiQuery({ name: 'cpf', required: false, type: String })
   async list(@Query() filter: FilterPacienteDto): Promise<PacienteDto[]> {
     return await this.readPacienteService.execute(filter);
+  }
+
+  @Patch(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() paciente: PacienteDto,
+  ): Promise<PacienteDto> {
+    return await this.updatePacienteService.execute(id, paciente);
   }
 }
