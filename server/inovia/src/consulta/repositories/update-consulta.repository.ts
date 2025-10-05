@@ -10,19 +10,15 @@ export class UpdateConsultaRepository {
     @InjectModel(Consulta.name) private consultaModel: Model<ConsultaDocument>,
   ) {}
 
-  async execute(
-    id: string,
-    consulta: ConsultaDto,
-  ): Promise<ConsultaDto> {
-    const filter = { id: id };
-    const updatedConsulta = await this.consultaModel.findOneAndDelete(
-      filter,
-      consulta,
-    );
+  async execute(id: string, consulta: ConsultaDto): Promise<ConsultaDto> {
+    const updatedConsulta = await this.consultaModel
+      .findByIdAndUpdate(id, consulta, { new: true })
+      .exec();
+
     if (!updatedConsulta) {
       throw new Error('Consulta nao encontrada');
     }
+
     return updatedConsulta.toObject();
   }
 }
-

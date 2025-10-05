@@ -11,13 +11,18 @@ export class ReadConsultaRepository {
     @InjectModel(Consulta.name) private consultaModel: Model<ConsultaDocument>,
   ) {}
 
-  async execute(filter: FilterConsultaDto): Promise<ConsultaDto[]> {
+  async findById(id: string): Promise<ConsultaDto | null> {
+    const consulta = await this.consultaModel.findById(id).exec();
+    return consulta ? consulta.toObject() : null;
+  }
+
+  async execute(filter?: FilterConsultaDto): Promise<ConsultaDto[]> {
     const query = this.consultaModel.find(filter ?? {});
-    const consultas = await query.sort({inicio: 1}).exec();
+    const consultas = await query.sort({ inicio: 1 }).exec();
     return consultas.map((consulta) => consulta.toObject());
   }
 
-  async executeOne(filter: FilterConsultaDto): Promise<ConsultaDto | null> {
+  async executeOne(filter?: FilterConsultaDto): Promise<ConsultaDto | null> {
     const consulta = await this.consultaModel
       .findOne(filter ?? {})
       .sort({ inicio: 1 })

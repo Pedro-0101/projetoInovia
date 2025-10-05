@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { ApiQuery } from '@nestjs/swagger';
 import { CreateConsultaService } from './services/create-consulta.service';
 import type { ConsultaDto } from './dtos/consulta.dto';
 import { UpdateConsultaService } from './services/update-consulta.service';
@@ -27,7 +28,14 @@ export class ConsultaController {
   }
 
   @Get('buscar')
-  async list(@Body() filter: FilterConsultaDto): Promise<ConsultaDto[]> {
+  @ApiQuery({ name: 'nutricionista', required: false, type: String })
+  @ApiQuery({ name: 'paciente', required: false, type: String })
+  @ApiQuery({ name: 'status', required: false, type: String })
+  @ApiQuery({ name: 'inicioDe', required: false, type: String, format: 'date-time' })
+  @ApiQuery({ name: 'inicioAte', required: false, type: String, format: 'date-time' })
+  @ApiQuery({ name: 'terminoDe', required: false, type: String, format: 'date-time' })
+  @ApiQuery({ name: 'terminoAte', required: false, type: String, format: 'date-time' })
+  async list(@Query() filter: FilterConsultaDto): Promise<ConsultaDto[]> {
     return this.readConsultaService.execute(filter);
   }
 }

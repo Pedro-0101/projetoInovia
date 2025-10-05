@@ -9,6 +9,7 @@ import { CreateNutricionistaRepository } from './repositories/create-nutricionis
 import { CreateNutricionistaService } from './services/create-nutricionista.service';
 import { UpdateNutricionistaRepository } from './repositories/update-nutricionista.repository';
 import { UpdateNutricionistaService } from './services/update-nutricionista.service';
+import { ReadNutricionistaRepository } from './repositories/read-nutricionista.repository';
 
 @Module({
   imports: [
@@ -22,12 +23,14 @@ import { UpdateNutricionistaService } from './services/update-nutricionista.serv
     CreateNutricionistaService,
     UpdateNutricionistaRepository,
     UpdateNutricionistaService,
+    ReadNutricionistaRepository,
   ],
   exports: [
     CreateNutricionistaRepository,
     CreateNutricionistaService,
     UpdateNutricionistaRepository,
     UpdateNutricionistaService,
+    ReadNutricionistaRepository,
   ],
 })
 export class NutricionistaModule {}

@@ -9,11 +9,11 @@ export class ReadConsultaService {
     private readonly readConsultaRepository: ReadConsultaRepository,
   ) {}
 
-  async execute(filter: FilterConsultaDto): Promise<ConsultaDto[]> {
+  async execute(filter?: FilterConsultaDto): Promise<ConsultaDto[]> {
     return this.readConsultaRepository.execute(filter);
   }
 
-  async executeOne(filter: FilterConsultaDto): Promise<ConsultaDto | null> {
+  async executeOne(filter?: FilterConsultaDto): Promise<ConsultaDto | null> {
     return this.readConsultaRepository.executeOne(filter);
-  } 
+  }
 }
