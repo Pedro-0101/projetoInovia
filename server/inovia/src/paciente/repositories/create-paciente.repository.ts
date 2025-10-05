@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Paciente, PacienteDocument } from '../Schema/paciente.schema';
 import { Model } from 'mongoose';
-import { IPacienteEntity } from '../interfaces/IPacienteEntity';
+import { PacienteDto } from '../dto/paciente.dto';
 
 @Injectable()
 export class CreatePacienterepository {
@@ -10,9 +10,10 @@ export class CreatePacienterepository {
     @InjectModel(Paciente.name) private pacienteModel: Model<PacienteDocument>,
   ) {}
 
-  async execute(paciente: IPacienteEntity): Promise<IPacienteEntity> {
+  async execute(paciente: PacienteDto): Promise<PacienteDto> {
     const createdPaciente = new this.pacienteModel(paciente);
     await createdPaciente.save();
     return createdPaciente.toObject();
   }
 }
+

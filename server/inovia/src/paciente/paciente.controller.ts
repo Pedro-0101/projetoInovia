@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreatePacienteService } from './services/create-paciente.service';
-import type { IPacienteEntity } from './interfaces/IPacienteEntity';
+import type { PacienteDto } from './dto/paciente.dto';
 
 @Controller('paciente')
 export class PacienteController {
@@ -9,7 +9,8 @@ export class PacienteController {
   ){}
 
   @Post()
-  async create(@Body() paciente: IPacienteEntity): Promise<IPacienteEntity> {
+  async create(@Body() paciente: PacienteDto): Promise<PacienteDto> {
     return await this.createPacienteService.execute(paciente)
   }
 }
+

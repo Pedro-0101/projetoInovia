@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateConsultaRepository } from '../repositories/create-consulta.repository';
-import { IConsultaEntity } from '../interfaces/IConsultaEntity';
+import { ConsultaDto } from '../dtos/consulta.dto';
 
 @Injectable()
 export class CreateConsultaService {
@@ -8,8 +8,9 @@ export class CreateConsultaService {
     private readonly createConsultaRepository : CreateConsultaRepository,
   ) {}
 
-  async execute(consulta: IConsultaEntity): Promise<IConsultaEntity> {
+  async execute(consulta: ConsultaDto): Promise<ConsultaDto> {
     let newConsulta = await this.createConsultaRepository.execute(consulta);
     return newConsulta;
   }
 }
+

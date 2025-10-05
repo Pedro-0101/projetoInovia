@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateNutricionistaService } from './services/create-nutricionista.service';
-import type { INutricionistaEntity } from './interfaces/INutricionistaEntity';
+import type { NutricionistaDto } from './dto/nutricionista.dto';
 
 @Controller('nutricionista')
 export class NutricionistaController {
@@ -9,7 +9,8 @@ export class NutricionistaController {
   ){}
 
   @Post()
-  async create(@Body() nutricionista: INutricionistaEntity): Promise<INutricionistaEntity> {
+  async create(@Body() nutricionista: NutricionistaDto): Promise<NutricionistaDto> {
     return await this.createNutricionistaService.execute(nutricionista)
   }
 }
+
