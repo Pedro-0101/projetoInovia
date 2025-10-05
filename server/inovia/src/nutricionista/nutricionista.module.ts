@@ -7,6 +7,8 @@ import {
 import { MongooseModule } from '@nestjs/mongoose';
 import { CreateNutricionistaRepository } from './repositories/create-nutricionista.repository';
 import { CreateNutricionistaService } from './services/create-nutricionista.service';
+import { UpdateNutricionistaRepository } from './repositories/update-nutricionista.repository';
+import { UpdateNutricionistaService } from './services/update-nutricionista.service';
 
 @Module({
   imports: [
@@ -15,7 +17,17 @@ import { CreateNutricionistaService } from './services/create-nutricionista.serv
     ]),
   ],
   controllers: [NutricionistaController],
-  providers: [CreateNutricionistaRepository, CreateNutricionistaService],
-  exports: [CreateNutricionistaRepository, CreateNutricionistaService],
+  providers: [
+    CreateNutricionistaRepository,
+    CreateNutricionistaService,
+    UpdateNutricionistaRepository,
+    UpdateNutricionistaService,
+  ],
+  exports: [
+    CreateNutricionistaRepository,
+    CreateNutricionistaService,
+    UpdateNutricionistaRepository,
+    UpdateNutricionistaService,
+  ],
 })
 export class NutricionistaModule {}

@@ -19,7 +19,10 @@ export class ConsultaController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() consulta: ConsultaDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() consulta: ConsultaDto,
+  ): Promise<ConsultaDto> {
     return this.updateConsultaService.execute(id, consulta);
   }
 
