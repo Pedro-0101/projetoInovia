@@ -4,13 +4,27 @@ import { Paciente, PacienteSchema } from './Schema/paciente.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CreatePacienterepository } from './repositories/create-paciente.repository';
 import { CreatePacienteService } from './services/create-paciente.service';
+import { ReadPacienteRepository } from './repositories/read-paciente.repository';
+import { ReadPacienteService } from './services/read-paciente.service';
 
 @Module({
   imports: [
-      MongooseModule.forFeature([{name: Paciente.name, schema: PacienteSchema}])
-    ],
+    MongooseModule.forFeature([
+      { name: Paciente.name, schema: PacienteSchema },
+    ]),
+  ],
   controllers: [PacienteController],
-  providers: [CreatePacienterepository, CreatePacienteService],
-  exports: [CreatePacienterepository, CreatePacienteService]
+  providers: [
+    CreatePacienterepository,
+    CreatePacienteService,
+    ReadPacienteRepository,
+    ReadPacienteService,
+  ],
+  exports: [
+    CreatePacienterepository,
+    CreatePacienteService,
+    ReadPacienteRepository,
+    ReadPacienteService,
+  ],
 })
 export class PacienteModule {}

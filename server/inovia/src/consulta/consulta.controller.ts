@@ -36,6 +36,6 @@ export class ConsultaController {
   @ApiQuery({ name: 'terminoDe', required: false, type: String, format: 'date-time' })
   @ApiQuery({ name: 'terminoAte', required: false, type: String, format: 'date-time' })
   async list(@Query() filter: FilterConsultaDto): Promise<ConsultaDto[]> {
-    return this.readConsultaService.execute(filter);
+    return await this.readConsultaService.execute(filter);
   }
 }
