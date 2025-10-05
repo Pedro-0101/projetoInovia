@@ -18,4 +18,11 @@ export class ReadNutricionistaRepository {
     const nutricionista = await this.nutricionistaModel.findById(id).exec();
     return nutricionista ? nutricionista.toObject() : null;
   }
+
+  async execute(id?: string): Promise<NutricionistaDto[]> {
+    const filter = id ? { _id: id } : {};
+    const query = this.nutricionistaModel.find(filter);
+    const nutricionistas = await query.sort({ nome: 1 }).exec();
+    return nutricionistas.map((nutricionista) => nutricionista.toObject());
+  }
 }

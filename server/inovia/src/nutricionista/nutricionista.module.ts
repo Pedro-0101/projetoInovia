@@ -10,6 +10,7 @@ import { CreateNutricionistaService } from './services/create-nutricionista.serv
 import { UpdateNutricionistaRepository } from './repositories/update-nutricionista.repository';
 import { UpdateNutricionistaService } from './services/update-nutricionista.service';
 import { ReadNutricionistaRepository } from './repositories/read-nutricionista.repository';
+import { ReadNutricionistaService } from './services/read-nutricionista.service';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ReadNutricionistaRepository } from './repositories/read-nutricionista.r
     UpdateNutricionistaRepository,
     UpdateNutricionistaService,
     ReadNutricionistaRepository,
+    ReadNutricionistaService,
   ],
   exports: [
     CreateNutricionistaRepository,
@@ -31,6 +33,7 @@ import { ReadNutricionistaRepository } from './repositories/read-nutricionista.r
     UpdateNutricionistaRepository,
     UpdateNutricionistaService,
     ReadNutricionistaRepository,
+    ReadNutricionistaService,
   ],
 })
 export class NutricionistaModule {}
