@@ -16,4 +16,3 @@ export class CreateConsultaRepository {
     return createdConsulta.toObject();
   }
 }
-

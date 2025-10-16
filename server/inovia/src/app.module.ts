@@ -7,7 +7,14 @@ import { PacienteModule } from './paciente/paciente.module';
 import { NutricionistaModule } from './nutricionista/nutricionista.module';
 
 @Module({
-  imports: [ConsultaModule, MongooseModule.forRoot("mongodb+srv://pedrocerquilho_db_user:1G0lNWal7MkcyivD@cluster0.hmmpc4p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"), PacienteModule, NutricionistaModule],
+  imports: [
+    ConsultaModule,
+    MongooseModule.forRoot(
+      'mongodb+srv://pedrocerquilho_db_user:1G0lNWal7MkcyivD@cluster0.hmmpc4p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+    ),
+    PacienteModule,
+    NutricionistaModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

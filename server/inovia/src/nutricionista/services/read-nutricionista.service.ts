@@ -11,7 +11,9 @@ export class ReadNutricionistaService {
 
   async execute(id?: string): Promise<NutricionistaDto[]> {
     const formattedId =
-      typeof id === 'string' && id.trim().length > 0 && Types.ObjectId.isValid(id)
+      typeof id === 'string' &&
+      id.trim().length > 0 &&
+      Types.ObjectId.isValid(id)
         ? id
         : undefined;
 

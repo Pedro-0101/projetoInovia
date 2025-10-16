@@ -8,8 +8,7 @@ export class CreatePacienteService {
     private readonly createPacienteRepository: CreatePacienterepository,
   ) {}
   async execute(paciente: PacienteDto): Promise<PacienteDto> {
-    let newPaciente = await this.createPacienteRepository.execute(paciente);
+    const newPaciente = await this.createPacienteRepository.execute(paciente);
     return newPaciente;
   }
 }
-

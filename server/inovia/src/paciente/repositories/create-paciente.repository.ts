@@ -16,4 +16,3 @@ export class CreatePacienterepository {
     return createdPaciente.toObject();
   }
 }
-

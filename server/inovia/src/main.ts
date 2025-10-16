@@ -7,11 +7,13 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Inovia')
-    .setDescription('Documentacacao da api para agendamento de consultas em nutricionista')
+    .setDescription(
+      'Documentacacao da api para agendamento de consultas em nutricionista',
+    )
     .setVersion('1.0')
     .addTag('Nutricionista')
     .build();
-    
+
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
 

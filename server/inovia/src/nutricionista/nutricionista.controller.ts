@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { ApiQuery } from '@nestjs/swagger';
 import { CreateNutricionistaService } from './services/create-nutricionista.service';
 import type { NutricionistaDto } from './dto/nutricionista.dto';

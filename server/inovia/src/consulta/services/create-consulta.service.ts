@@ -5,12 +5,11 @@ import { ConsultaDto } from '../dtos/consulta.dto';
 @Injectable()
 export class CreateConsultaService {
   constructor(
-    private readonly createConsultaRepository : CreateConsultaRepository,
+    private readonly createConsultaRepository: CreateConsultaRepository,
   ) {}
 
   async execute(consulta: ConsultaDto): Promise<ConsultaDto> {
-    let newConsulta = await this.createConsultaRepository.execute(consulta);
+    const newConsulta = await this.createConsultaRepository.execute(consulta);
     return newConsulta;
   }
 }
-
